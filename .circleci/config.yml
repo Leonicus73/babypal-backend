@@ -84,7 +84,12 @@ jobs:
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD
       # - run: docker build -t $DOCKER_IMAGE .
-      # - run: docker buildx build -t $DOCKER_IMAGE . --load
+      - docker/build:
+          image: $DOCKER_IMAGE
+          tag: << pipeline.git.revision >>,latest
+      - docker/push:
+          image: $DOCKER_IMAGE
+          tag: << pipeline.git.revision >>,latest
       - snyk/scan:
           docker-image-name: $DOCKER_IMAGE
           fail-on-issues: false
