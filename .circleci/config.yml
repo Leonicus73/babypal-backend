@@ -84,7 +84,7 @@ jobs:
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD
       # - run: docker build -t $DOCKER_IMAGE .
-      - run: docker buildx build -t $DOCKER_IMAGE . --load
+      # - run: docker buildx build -t $DOCKER_IMAGE . --load
       - snyk/scan:
           docker-image-name: $DOCKER_IMAGE
           fail-on-issues: false
