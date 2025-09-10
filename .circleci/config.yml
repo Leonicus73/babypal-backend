@@ -81,8 +81,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - docker/check:
-          docker-username: DOCKER_USER
-          docker-password: DOCKER_PASSWORD
+          docker-username: $DOCKER_USER
+          docker-password: $DOCKER_PASSWORD
       - run: docker build -t $DOCKER_IMAGE .
       - snyk/scan:
           docker-image-name: $DOCKER_IMAGE
